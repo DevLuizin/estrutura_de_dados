@@ -276,4 +276,22 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return dadoAux
     }
 
+    // 16 - Apagar todos os dados da lista
+    fun apagarTodos(): Array<Any?> {
+        var dadosAux: Array<Any?> = arrayOfNulls(quantidade)
+        if (!estaVazia()) {
+            var ponteiroAux = ponteiroInicio
+            for (i in 0 until quantidade) {
+                dadosAux[i] = dados[ponteiroAux]
+                ponteiroAux = avancar(ponteiroAux)
+            }
+            ponteiroInicio = 0
+            ponteiroFim = -1
+            quantidade = 0
+        } else {
+            println("List is Empty!")
+        }
+        return dadosAux
+    }
+
 }
