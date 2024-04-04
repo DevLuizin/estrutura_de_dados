@@ -124,15 +124,37 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
     // 06 - Buscar todos os dados da lista
     fun buscarTodos(): Array<Any?> {
         var dadosAux: Array<Any?> = arrayOfNulls(quantidade)
-        if (!estaVazia())
+        if (!estaVazia()) {
             var ponteiroAux = ponteiroInicio
             for (i in 0 until quantidade) {
                 dadosAux[i] = dados[ponteiroAux]
                 ponteiroAux = avancar(ponteiroAux)
             }
-        else
+        }
+        else {
             println("List is empty!")
+        }
         return dadosAux
+    }
+
+    // 07 - Primeira Ocorrência
+    fun primeiraOcorrencia(dado: Any?): Int {
+        var ocorrencia = -1
+        if (!estaVazia()) {
+            var ponteiroAux = ponteiroInicio
+            for (i in 0 until quantidade) {
+                var dadoAtual = dados[ponteiroAux]
+                ponteiroAux = avancar(ponteiroAux)
+                if (dadoAtual == dado) {
+                    ocorrencia = i
+                    break
+                }
+            }
+        }
+        else {
+            println("List is empty!")
+        }
+        return ocorrencia
     }
 
     // 10 - Atualizar o dado do fim de uma Lista Estatica Circular
