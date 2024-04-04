@@ -121,6 +121,20 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return dadoRetono
     }
 
+    // 06 - Buscar todos os dados da lista
+    fun buscarTodos(): Array<Any?> {
+        var dadosAux: Array<Any?> = arrayOfNulls(quantidade)
+        if (!estaVazia())
+            var ponteiroAux = ponteiroInicio
+            for (i in 0 until quantidade) {
+                dadosAux[i] = dados[ponteiroAux]
+                ponteiroAux = avancar(ponteiroAux)
+            }
+        else
+            println("List is empty!")
+        return dadosAux
+    }
+
     // 10 - Atualizar o dado do fim de uma Lista Estatica Circular
     fun atualizarFim(dado: Any?) {
         if (!estaVazia()) {
