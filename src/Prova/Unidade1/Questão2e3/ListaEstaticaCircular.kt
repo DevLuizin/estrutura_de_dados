@@ -157,6 +157,26 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return ocorrencia
     }
 
+    // 08 - Última ocorrência
+    fun ultimaOcorrencia(dado: Any?): Int {
+        var ocorrencia = quantidade
+        if (!estaVazia()) {
+            var ponteiroAux = ponteiroFim
+            for (i in quantidade-1 downTo 0) {
+                var dadoAtual = dados[ponteiroAux]
+                ponteiroAux = retroceder(ponteiroAux)
+                if (dadoAtual == dado) {
+                    ocorrencia = i
+                    break
+                }
+            }
+        }
+        else {
+            println("List is empty!")
+        }
+        return ocorrencia
+    }
+
     // 10 - Atualizar o dado do fim de uma Lista Estatica Circular
     fun atualizarFim(dado: Any?) {
         if (!estaVazia()) {
