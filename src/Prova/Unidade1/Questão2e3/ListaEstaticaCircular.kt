@@ -249,4 +249,31 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return dadoAux
     }
     
+    // 15 - Apagar dado de determinada posição
+    fun apagar(posicao: Int): Any? {
+        var dadoAux: Any? = null
+        if (!estaVazia()) {
+            if (posicao >= 0 && posicao < quantidade) {
+                val posicaoFisica = logicaParaFisica(posicao)
+                dadoAux = dados[posicaoFisica]
+
+                var atual = posicaoFisica
+                var proximo = atual
+                proximo = avancar(proximo)
+                for (i in posicao until (quantidade-1)) {
+                    dados[atual] = dados[proximo]
+                    atual = avancar(atual)
+                    proximo = avancar(proximo)
+                }
+                ponteiroFim = retroceder(ponteiroFim)
+                quantidade--
+            } else {
+                println("Invalid Index!")
+            }
+        } else {
+            println("List is Empty!")
+        }
+        return dadoAux
+    }
+
 }
