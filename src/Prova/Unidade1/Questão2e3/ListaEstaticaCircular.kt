@@ -294,4 +294,18 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return dadosAux
     }
 
+    // 17 - Ordenar dados em ordem crescente
+    fun ordernarCrescente() {
+        if (!estaVazia()) {
+            for (i in 0+ponteiroInicio until quantidade+ponteiroInicio) {
+                for (j in 0+ponteiroInicio until (quantidade-1)+ponteiroInicio) {
+                    if ((dados[j%dados.size] as Int) > (dados[(j+1)%dados.size] as Int))
+                        trocar(j%dados.size, (j+1)%dados.size)
+                }
+            }
+        } else {
+            println("List is Empty!")
+        }
+    }
+
 }
