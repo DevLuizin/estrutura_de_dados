@@ -94,6 +94,16 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return dadoAux
     }
 
+    // 04 - Buscar um dado no fim da lista
+    fun buscarFim(): Any? {
+        var dadoAux: Any? = null
+        if (!estaVazia())
+            dadoAux = dados[ponteiroFim]
+        else
+            println("List is empty!")
+        return dadoAux
+    }
+
     // 05 - Buscar um dado de uma posição lógica específica em uma Lista Estatica Circular
     fun Buscar(posicao: Int): Any? {
         var dadoRetono: Any? = null
