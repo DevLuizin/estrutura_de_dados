@@ -177,6 +177,15 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         return ocorrencia
     }
 
+    // 09 - Atualizar dado no início da lista
+    fun atualizarInicio(dado: Any?) {
+        if (!estaVazia()) {
+            dados[ponteiroInicio] = dado
+        } else {
+            println("List is Empty!")
+        }
+    }
+
     // 10 - Atualizar o dado do fim de uma Lista Estatica Circular
     fun atualizarFim(dado: Any?) {
         if (!estaVazia()) {
