@@ -194,5 +194,19 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
             println("List is Empty!")
         }
     }
+
+    // 11 - Atualizar dado em posição determinada na lista
+    fun atualizar(posicao: Int, dado: Any?) {
+        if (!estaVazia()) {
+            if (posicao >= 0 && posicao < quantidade) {
+                val posicaoFisica = logicaParaFisica(posicao)
+                dados[posicaoFisica] = dado
+            } else {
+                println("Invalid Index!")
+            }
+        } else {
+            println("List is Empty!")
+        }
+    }
     
 }
