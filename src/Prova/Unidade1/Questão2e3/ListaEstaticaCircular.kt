@@ -322,4 +322,19 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         }
     }
 
+    // 19 - Inverter
+    fun inverter() {
+        if (!estaVazia()) {
+           var ponteiroAuxInicio = ponteiroInicio
+           var ponteiroAuxFim = ponteiroFim
+           for (i in 0 until quantidade/2) {
+                trocar(ponteiroAuxInicio, ponteiroAuxFim)
+                ponteiroAuxInicio = avancar(ponteiroAuxInicio)
+                ponteiroAuxFim = retroceder(ponteiroAuxFim)
+           }
+        } else {
+            println("List is Empty!")
+        }
+    }
+
 }
