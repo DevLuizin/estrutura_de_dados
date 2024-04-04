@@ -47,6 +47,17 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         }
     }
 
+    // 01 - Inserir dado no fim da lista
+    fun inserirFim(dado: Any?) {
+        if (!estaCheia()) {
+            ponteiroFim = avancar(ponteiroFim)
+            dados[ponteiroFim] = dado
+            quantidade++
+        } else {
+            println("List is full!")
+        }
+    }
+
     // 05 - Buscar um dado de uma posição lógica específica em uma Lista Estatica Circular
     fun Buscar(posicao: Int): Any? {
         var dadoRetono: Any? = null
