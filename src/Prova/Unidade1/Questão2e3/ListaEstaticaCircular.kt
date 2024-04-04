@@ -34,6 +34,19 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         dados[j] = dadoAux
     }
 
+    // 00 - Inserir dado no início da lista
+    fun inserirInicio(dado: Any?) {
+        if (!estaCheia()) {
+            ponteiroInicio = retroceder(ponteiroInicio)
+            dados[ponteiroInicio] = dado
+            quantidade++
+            if (ponteiroFim == -1)
+                ponteiroFim = ponteiroInicio
+        } else {
+            println("List is full!")
+        }
+    }
+
     // 05 - Buscar um dado de uma posição lógica específica em uma Lista Estatica Circular
     fun Buscar(posicao: Int): Any? {
         var dadoRetono: Any? = null
