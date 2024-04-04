@@ -58,6 +58,32 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         }
     }
 
+    // 02 - Inserir dado em determinada posição
+    fun inserir(posicao: Int, dado: Any?) {
+        if (!estaCheia()) {
+            if (posicao >= 0 && posicao <= quantidade) {
+                val posicaoFisica = logicaParaFisica(posicao)
+                var atual = ponteiroFim
+                var anterior = atual
+                atual = avancar(atual)
+
+                for (i in posicao until quantidade) {
+                    dados[atual] = dados[anterior]
+                    atual = retroceder(atual)
+                    anterior = retroceder(anterior)
+                }
+                
+                dados[posicaoFisica] = dado
+                ponteiroFim = avancar(ponteiroFim)
+                quantidade++
+            } else {
+                println("Invalid Index!")
+            }
+        } else {
+            println("List is full!")
+        }
+    }
+
     // 05 - Buscar um dado de uma posição lógica específica em uma Lista Estatica Circular
     fun Buscar(posicao: Int): Any? {
         var dadoRetono: Any? = null
