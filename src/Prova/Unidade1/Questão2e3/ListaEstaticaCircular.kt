@@ -227,7 +227,21 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         var dadoAux: Any? = null
         if (!estaVazia()) {
             dadoAux = dados[ponteiroInicio]
-            ponteiroFim = avancar(ponteiroInicio)
+            ponteiroInicio = avancar(ponteiroInicio)
+            quantidade--
+        } else {
+            println("List is Empty!")
+        }
+        return dadoAux
+    }
+
+
+    // 14 - Apagar dado no fim da lista
+    fun apagarFim(): Any? {
+        var dadoAux: Any? = null
+        if (!estaVazia()) {
+            dadoAux = dados[ponteiroFim]
+            ponteiroFim = retroceder(ponteiroFim)
             quantidade--
         } else {
             println("List is Empty!")
