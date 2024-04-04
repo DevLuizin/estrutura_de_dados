@@ -208,5 +208,18 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
             println("List is Empty!")
         }
     }
+
+    // 12 - Atualizar todos os dados da lista
+    fun atualizarTodos(dado: Any?) {
+        if (!estaVazia()) {
+            var ponteiroAux = ponteiroInicio
+            for (i in 0 until quantidade) {
+                dados[ponteiroAux] = dado
+                ponteiroAux = avancar(ponteiroAux)
+            }
+        } else {
+            println("List is Empty!")
+        }
+    }
     
 }
