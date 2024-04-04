@@ -72,7 +72,7 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
                     atual = retroceder(atual)
                     anterior = retroceder(anterior)
                 }
-                
+
                 dados[posicaoFisica] = dado
                 ponteiroFim = avancar(ponteiroFim)
                 quantidade++
@@ -82,6 +82,16 @@ class ListaEstaticaCircular(val tamanho: Int = 10) {
         } else {
             println("List is full!")
         }
+    }
+
+    // 03 - Buscar um dado no início da lista
+    fun buscarInicio(): Any? {
+        var dadoAux: Any? = null
+        if (!estaVazia())
+            dadoAux = dados[ponteiroInicio]
+        else
+            println("List is empty!")
+        return dadoAux
     }
 
     // 05 - Buscar um dado de uma posição lógica específica em uma Lista Estatica Circular
