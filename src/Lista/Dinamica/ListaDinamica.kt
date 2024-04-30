@@ -24,30 +24,39 @@ class ListaDinamica(private val tamanho: Int = 10): Listavel {
         if (!estaCheia()) {
             if (posicao >= 0 && posicao <= quantidade) {
                 val noTemp = NoDuplo(dado)
-                // noTemp.dado = dado
-                var ponteiroAux = ponteiroInicio
-                for (i in 0 ..< posicao)
-                    ponteiroAux = ponteiroAux?.proximo
-                
-                if (estaVazia()) {
-                    ponteiroInicio = noTemp
-                    ponteiroFim = noTemp 
-                } else {
-                    val ponteiroPro = ponteiroAux
-                    val ponteiroAnt = ponteiroAux?.anterior ?: ponteiroFim
+				//noTemp.dado = dado
+				var ponteiroAuxiliar = ponteiroInicio
+				for (i in 0 until posicao)
+					ponteiroAuxiliar = ponteiroAuxiliar?.proximo
+				
+				val ponteiroProximo = ponteiroAuxiliar
+				val ponteiroAnterior = ponteiroFim
+				if (ponteiroAuxiliar != null)
+					ponteiroAnterior = ponteiroAuxiliar.anterior
+				*/
+				var ponteiroAnterior: NoDuplo? = null
+				var ponteiroProximo = ponteiroInicio
 
-                    if (ponteiroAnt != null)
-                        ponteiroAnt.proximo = noTemp
-                    else
-                        ponteiroInicio = noTemp
-                    
-                    if (ponteiroPro != null)
-                        ponteiroPro.anterior = noTemp
-                    else 
-                        ponteiroFim = noTemp
-                        
-                    noTemp.proximo = ponteiroPro
-                    noTemp.anterior = ponteiroAnt
+				for (i in 0 until posicao) {
+					ponteiroAnterior = ponteiroProximo
+					ponteiroProximo = ponteiroProximo?.proximo
+				}
+
+				//todas insercoes, exceto inicio
+				if (ponteiroAnterior != null)						
+					ponteiroAnterior.proximo = noTemp
+				else
+					ponteiroInicio = noTemp
+
+				if (ponteiroProximo != null)
+					ponteiroProximo.anterior = noTemp
+				else	
+					ponteiroFim = noTemp						
+			
+				noTemp.proximo = ponteiroProximo
+				noTemp.anterior = ponteiroAnterior						
+
+				quantidade = quantidade.inc()
                 }
             } else  {
                 println("Invalid Index")
