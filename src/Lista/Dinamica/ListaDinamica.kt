@@ -25,12 +25,14 @@ class ListaDinamica(private val tamanho: Int = 10): Listavel {
             if (posicao >= 0 && posicao <= quantidade) {
                 val noTemp = NoDuplo(dado)
 				//noTemp.dado = dado
+
+                /*
 				var ponteiroAuxiliar = ponteiroInicio
 				for (i in 0 until posicao)
 					ponteiroAuxiliar = ponteiroAuxiliar?.proximo
 				
-				val ponteiroProximo = ponteiroAuxiliar
-				val ponteiroAnterior = ponteiroFim
+				var ponteiroProximo = ponteiroAuxiliar
+				var ponteiroAnterior = ponteiroFim
 				if (ponteiroAuxiliar != null)
 					ponteiroAnterior = ponteiroAuxiliar.anterior
 				*/
@@ -57,8 +59,7 @@ class ListaDinamica(private val tamanho: Int = 10): Listavel {
 				noTemp.anterior = ponteiroAnterior						
 
 				quantidade = quantidade.inc()
-                }
-            } else  {
+                } else  {
                 println("Invalid Index")
             }
         } else {
@@ -115,12 +116,22 @@ class ListaDinamica(private val tamanho: Int = 10): Listavel {
                 var ponteiroAux = ponteiroInicio
                 for (i in 0 ..< posicao)
                     ponteiroAux = ponteiroAux?.proximo
+
+                dadoAux = ponteiroAux?.dado
+
                 var ponteiroAnt = ponteiroAux?.anterior
                 var ponteiroPro = ponteiroAux?.proximo
+
                 if (ponteiroAnt != null)
                     ponteiroAnt.proximo = ponteiroPro
+                else
+                    ponteiroInicio = ponteiroInicio?.proximo
+
                 if (ponteiroPro != null)
                     ponteiroPro.anterior = ponteiroAnt
+                else
+                    ponteiroFim = ponteiroFim?.anterior
+
                 quantidade = quantidade.dec()
             } else {
                 println("Invalid Index!")
